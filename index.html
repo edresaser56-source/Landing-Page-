@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ImplantLeadsPro</title>
+<style>
+body {margin:0;font-family:Arial;background:#0f172a;color:#fff;}
+header {padding:80px 20px;text-align:center;background:linear-gradient(135deg,#0f172a,#1e293b);}
+h1 {font-size:48px;margin-bottom:10px;}
+p {color:#cbd5f5;}
+.btn {background:#22c55e;padding:15px 30px;color:#000;text-decoration:none;border-radius:8px;font-weight:bold;}
+.section {padding:60px 20px;text-align:center;}
+.cards {display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
+.card {background:#1e293b;padding:25px;border-radius:12px;width:300px;box-shadow:0 0 20px rgba(0,0,0,0.3);} 
+input, textarea {width:100%;padding:12px;margin:10px 0;border-radius:6px;border:none;}
+button {background:#22c55e;border:none;padding:15px;width:100%;border-radius:8px;font-weight:bold;cursor:pointer;}
+footer {padding:20px;text-align:center;color:#94a3b8;}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Get Exclusive Dental Implant Patients</h1>
+<p>High-intent leads delivered directly to your clinic</p>
+<a href="#contact" class="btn">Request Leads</a>
+</header>
+
+<section class="section">
+<h2>How It Works</h2>
+<div class="cards">
+<div class="card"><h3>AI Lead Discovery</h3><p>We find real patients actively searching for implants.</p></div>
+<div class="card"><h3>Qualification</h3><p>Only high-intent patients are delivered.</p></div>
+<div class="card"><h3>Exclusive Delivery</h3><p>No shared leads. Only for your clinic.</p></div>
+</div>
+</section>
+
+<section class="section">
+<h2>Sample Lead</h2>
+<div class="card" style="margin:auto;">
+<p><strong>Location:</strong> Houston</p>
+<p><strong>Problem:</strong> Missing tooth</p>
+<p><strong>Intent:</strong> HIGH</p>
+<p><strong>Budget:</strong> Medium</p>
+</div>
+</section>
+
+<section class="section">
+<h2>Pricing</h2>
+<div class="cards">
+<div class="card"><h3>Starter</h3><p>10 Leads</p><p>$400</p></div>
+<div class="card"><h3>Growth</h3><p>25 Leads</p><p>$900</p></div>
+<div class="card"><h3>Monthly</h3><p>20 Leads</p><p>$800</p></div>
+</div>
+</section>
+
+<section class="section" id="contact">
+<h2>Request Leads</h2>
+<p>Fill the form and we will contact you within 24 hours</p>
+
+<form id="leadForm">
+<input type="text" name="name" placeholder="Clinic Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="text" name="city" placeholder="City" required>
+<textarea name="message" placeholder="Tell us your needs"></textarea>
+<button type="submit">Submit</button>
+</form>
+
+<p id="status"></p>
+</section>
+
+<footer>
+<p>© 2026 ImplantLeadsPro</p>
+</footer>
+
+<script>
+const form = document.getElementById('leadForm');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const data = new FormData(form);
+  const jsonData = Object.fromEntries(data.entries());
+
+  document.getElementById('status').innerText = "Sending...";
+
+  try {
+    await fetch("YOUR_N8N_WEBHOOK_URL", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(jsonData)
+    });
+
+    document.getElementById('status').innerText = "Request sent successfully.";
+    form.reset();
+  } catch (error) {
+    document.getElementById('status').innerText = "Error sending request.";
+  }
+});
+</script>
+
+</body>
+</html>
