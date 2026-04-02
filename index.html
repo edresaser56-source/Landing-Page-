@@ -58,7 +58,20 @@ footer {padding:20px;text-align:center;color:#94a3b8;}
 <h2>Request Leads</h2>
 <p>Fill the form and we will contact you within 24 hours</p>
 
-<form id="https://formspree.io/f/mkopvgll">
+<form id="  action="https://formspree.io/f/mkopvgll"
+  method="POST"
+>
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+  <!-- your other form fields go here -->
+  <button type="submit">Send</button>
+</form>">
 <input type="text" name="name" placeholder="Clinic Name" required>
 <input type="email" name="email" placeholder="Email" required>
 <input type="text" name="city" placeholder="City" required>
